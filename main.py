@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import requests
 
 app = FastAPI()
 
@@ -9,3 +10,7 @@ async def root():
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: str = None):
     return {"item_id": item_id, "q": q}
+
+def get(url: str):    
+    response = requests.get(url)
+    print(response.text)
